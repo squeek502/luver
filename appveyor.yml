@@ -1,0 +1,22 @@
+configuration: Release
+
+environment:
+  matrix:
+    - LUVI_ARCH: Windows-amd64
+    - LUVI_ARCH: Windows-ia32
+
+matrix:
+    fast_finish: true
+
+build_script:
+    - Make.bat lit
+    - Make.bat
+
+test_script:
+    - Make.bat test
+
+artifacts:
+    - path: luver.exe
+
+notifications:
+    email: true
