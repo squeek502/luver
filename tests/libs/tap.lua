@@ -19,9 +19,11 @@ limitations under the License.
 local uv = require('uv')
 
 -- add basic pretty-print color functionality
-local stdout = nil
+local stdout
+local useColors = false
 if uv.guess_handle(1) == 'tty' then
   stdout = assert(uv.new_tty(1, false))
+  useColors = true
 else
   stdout = uv.new_pipe(false)
   uv.pipe_open(stdout, 1)
@@ -38,7 +40,7 @@ local function color(colorName)
 end
 
 local function colorize(colorName, string, resetName)
-  return (color(colorName) .. tostring(string) .. color(resetName)) or tostring(string)
+  return useColors and (color(colorName) .. tostring(string) .. color(resetName)) or tostring(string)
 end
 
 -- redirect print to stdout
