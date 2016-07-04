@@ -13,12 +13,12 @@ Luver is a bare-bones alternative to [luvit][] that uses [lit][]'s `luvit-loader
 
 ## Usage
 
-`luver` requires a Lua script as its first parameter (`luver path/to/script.lua`). Luver will execute the script file and start the `libuv` event loop.
+`luver` takes a Lua script as its first parameter (`luver path/to/script.lua`). It will simply execute that script and start the `libuv` event loop for you.
 
 ### Example
 
-test.lua
 ```lua
+-- test.lua
 local uv = require('uv')
 local handle = uv.new_timer()
 local delay = 1000
