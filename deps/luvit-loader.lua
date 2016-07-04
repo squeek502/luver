@@ -26,7 +26,7 @@ limitations under the License.
 ]]
 
 local hasLuvi, luvi = pcall(require, 'luvi')
-local uv, pathjoin
+local uv, pathLib
 
 if hasLuvi then
   uv = require('uv')
@@ -36,13 +36,7 @@ else
   pathLib = loadfile("deps/pathjoin.lua")()
 end
 
-local pathJoin, isWindows = pathLib.pathJoin, pathLib.isWindows
-
-local getenv = require('os').getenv
-
-local tmpBase = isWindows and (getenv("TMP") or uv.cwd()) or
-                              (getenv("TMPDIR") or '/tmp')
-local binExt = isWindows and ".dll" or ".so"
+local pathJoin = pathLib.pathJoin
 
 local function loader(dir, path, bundleOnly)
   local errors = {}
