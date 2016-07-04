@@ -12,10 +12,10 @@ local args = {...}
 local script
 script = table.remove(args, 1)
 if _G.arg then
-	table.remove(arg, 1)
-	_G.arg[-2] = arg[0]
+  table.remove(arg, 1)
+  _G.arg[-2] = arg[0]
 else
-	_G.arg = args
+  _G.arg = args
   if hasLuvi then
     _G.arg[-2] = luvi.bundle.mainPath
   end
