@@ -96,7 +96,7 @@ local function loader(dir, path, bundleOnly)
         return package.loaded[key]
       end
       local code = luvi.bundle.readfile(fullPath)
-      local module = loadstring(code, key)()
+      local module = loadstring(code, key)(key)
       package.loaded[key] = module
       return module
     end, key

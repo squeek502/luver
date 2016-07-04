@@ -19,7 +19,6 @@ limitations under the License.
 
 require('tap')(function (test)
 
-  local uv = require('uv')
   local getinfo = debug.getinfo
   local fakeGetInfo = function(thread, fn, what)
     if type(thread) == "number" then
@@ -36,6 +35,14 @@ require('tap')(function (test)
   test("native lua require should still be there", function ()
     print(require, _G.require)
     assert(require == _G.require)
+  end)
+
+  test("required files should get their package name as ...", function ()
+    debug.getinfo = fakeGetInfo
+    local moduleKey = require('./module.lua')
+    print(moduleKey)
+    assert(moduleKey ~= nil)
+    debug.getinfo = getinfo
   end)
 
   test("relative require with extension", function ()
