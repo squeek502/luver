@@ -16,6 +16,9 @@ if _G.arg then
 	_G.arg[-2] = arg[0]
 else
 	_G.arg = args
+  if hasLuvi then
+    _G.arg[-2] = luvi.bundle.mainPath
+  end
 end
 _G.arg[-1] = uv.exepath()
 _G.arg[0] = script
