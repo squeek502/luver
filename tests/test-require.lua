@@ -136,6 +136,7 @@ require('tap')(function (test)
     debug.getinfo = fakeGetInfo
     local ok, err = pcall(require, 'parent')
     assert(not ok)
+    assert(err:find("loop or previous error"), "Wrong error. Expecting loop error, got: \n\n-----\n" .. err .. "\n-----\n")
     print(err)
     debug.getinfo = getinfo
   end)
