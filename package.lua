@@ -1,6 +1,6 @@
 return {
   name = "squeek502/luver",
-  version = "1.0.0",
+  version = "0.1.0",
   luvi = {
     version = "2.7.3",
     flavor = "regular",
@@ -8,7 +8,7 @@ return {
   license = "Apache 2",
   homepage = "https://github.com/squeek502/luver",
   description = "Bare-bones luvit-loader runtime",
-  tags = { "luvit", "loader", "luvi", "luv" },
+  tags = { "luvit", "loader", "luv" },
   author = { name = "Ryan Liptak" },
   dependencies = {
     "squeek502/luvit-loader@1.0.0"
