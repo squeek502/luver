@@ -30,7 +30,23 @@ local success, err = xpcall(function ()
   uv.run()
 end, debug.traceback)
 
+local exitCode = 0
 if not success then
-  print(err)
-  os.exit(-1)
+  local stderr
+  if uv.guess_handle(2) == 'tty' then
+    stderr = assert(uv.new_tty(2, false))
+  else
+    stderr = uv.new_pipe(false)
+    uv.pipe_open(stderr, 2)
+  end
+  stderr:write("Uncaught Error: " .. err .. "\n")
+  stderr:close()
+  exitCode = -1
 end
+
+uv.walk(function (handle)
+  if handle and not handle:is_closing() then handle:close() end
+end)
+uv.run()
+
+os.exit(exitCode)
