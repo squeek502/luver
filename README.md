@@ -34,6 +34,16 @@ Running `luver test.lua` would output "Test" after one second and then exit.
 
 ## Building
 
+### Building using Lit
+
+If you have [Lit](https://github.com/luvit/lit) installed, you can build Luver by executing:
+
+```sh
+lit make github://squeek502/luver
+```
+
+### Building from source
+
 Building luver is easy and works cross-platform thanks to `Makefile` and `make.bat`.
 
 ```sh
