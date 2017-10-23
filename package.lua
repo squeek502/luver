@@ -1,6 +1,6 @@
 return {
   name = "squeek502/luver",
-  version = "0.1.0",
+  version = "0.1.1",
   luvi = {
     version = "2.7.3",
     flavor = "regular",
