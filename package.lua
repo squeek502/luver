@@ -2,7 +2,7 @@ return {
   name = "squeek502/luver",
   version = "0.1.1",
   luvi = {
-    version = "2.7.3",
+    version = "2.7.6",
     flavor = "regular",
   },
   license = "Apache 2",
